@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+    Formulario de Cadastro de Usuarios No sistema
+--><html>
+    <head>   
+
+        <script type="text/javascript" src="../../../public/modules/scu/js/scu_j0001.js"></script>   
+        <script type="text/javascript" src="../../../library/jQuery/jquery.maskedinput.js"></script>
+        <link src='../../../library/bootstrap/css/styles.min.css'>
+
+    </head>
+    <body>
+        <form id="scu_h0001-frm" >
+            <div class="modal-dialog modal-lg" id="scu_h0001-dv">            
+                <div class="modal-content">
+                    <input type='hidden' name='scu_h0001-cd_usu' id='scu_h0001-cd_usu' />
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Cadastrar Usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="scu_h0001-frm_act">
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    <input class="form-control" name="scu_h0001-nm_usu" id="scu_h0001-nm_usu"/>
+                                    <p class="help-block">Nome completo Usuario</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Data</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type='text' class="form-control" name="scu_h0001-dt_nasc_usu" id="scu_h0001-dt_nasc_usu" />
+                                        <!--<input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">-->
+                                    </div><!-- /.input group -->
+                                    <p class="help-block">Data Nascimento</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                        <input class="form-control" name="scu_h0001-email_usu" id="scu_h0001-email_usu"/>
+                                    </div>
+                                    <p class="help-block">Email Usuario</p>
+                                </div>                                
+                                <div class="form-group">
+                                    <label>Cpf</label>
+                                    <input class="form-control" name="scu_h0001-cpf_usu" id="scu_h0001-cpf_usu"/>
+                                    <p class="help-block">Cpf Usuario</p>
+                                </div>
+                                <div class="form-group">
+                                    <label >Telefone</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <input type="text" name="scu_h0001-fn_usu" id="scu_h0001-fn_usu" data-inputmask="'mask':'(99) 9999-9999'" class="form-control mask">                                        
+                                    </div>
+                                    <p class="help-block">Numero Telefone</p>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="scu_h0001-st_usu" name="scu_h0001-st_usu">
+                                        <option>Status</option>
+                                        <option value="0">Ativo</option>
+                                        <option value="1">Inativo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Senha</label>
+                                    <input type="password"  class="form-control" name="scu_h0001-senha_usu" id="scu_h0001-senha_usu"/>
+                                    <p class="help-block">Senha Usuario</p>
+                                </div>
+
+                            </form>                         
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" name="scu_h0001-btn_incluir" id="scu_h0001-btn_incluir">Incluir</button>
+                            <button type="button" class="btn btn-primary" name="scu_h0001-btn_alterar" id="scu_h0001-btn_alterar">Alterar</button>
+                            <button type="button" class="btn btn-primary" name="scu_h0001-btn_excluir" id="scu_h0001-btn_excluir">Excluir</button>
+                            <button type="button" class="btn btn-default" name="scu_h0001-btn_limpar"  id="scu_h0001-btn_limpar">Limpar</button>
+
+                        </div>                        
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div> 
+
+            <div id="bosta">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-sky">
+                                <div class="panel-heading">
+                                    <h4>Usuario</h4>
+                                    <div class="options">   
+                                        <a href="javascript:;"><i class="fa fa-cog"></i></a>
+                                        <a href="javascript:;"><i class="fa fa-wrench"></i></a>
+                                        <a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
+                                    </div>
+                                </div>
+                                <div class="panel-body collapse in">
+                                    <div id="example_wrapper" class="dataTables_wrapper" role="grid">
+                                        <div class="row">                                            
+                                            <div class="col-xs-6">
+                                                <div class="dataTables_filter" id="example_filter">
+                                                    <label><input type="text" aria-controls="example" class="form-control" placeholder="Search..."></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table  id="scu_h0001-tb" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables dataTable" id="example" aria-describedby="example_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 166px;">Nome Usuario</th>
+                                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 251px;">Email</th>
+                                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 217px;">Data Nascimento</th>
+                                                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 143px;">Cpf</th>
+                                            </thead>
+                                            <tbody  role="alert" aria-live="polite" aria-relevant="all">                                    
+                                            </tbody>
+                                        </table>  
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--dv bosta -->        
+
+        </div>
+    </form>
+</body>
+</html>
+

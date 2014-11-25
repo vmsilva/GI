@@ -1,0 +1,62 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SGI</title>
+
+        <link rel="stylesheet" href="library/bootstrap/css/styles.min.css?=113">
+        <script type="text/javascript" src="library/jQuery/jquery-1.11.1.min.js"/>        
+        <script type="text/javascript" src="library/bootstrap/js/less.js"></script>
+        <script type="text/javascript" src="public/modules/login/login.js"></script>
+        
+        
+
+    </head>
+    <body class="focusedform">
+        <div id="login_dv-retorno" name="login_dv-retorno">            
+        </div>
+        
+        <!--<div class="alert alert-success alert-dismissable">
+            <i class="fa fa-check"></i>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <b>Alert!</b> Success alert preview. This alert is dismissable.
+        </div>-->
+        
+        
+
+        <div class="verticalcenter">
+            <div class="panel panel-primary">                        
+                <div class="panel-body">                                        
+                    <form action="src/login/controller/login_c.php&acao=logar" method="Post" class="form-horizontal" style="margin-bottom: 0px !important;">
+                        
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input class="form-control" name="login_cpf_usuario" id="login_cpf_usuario" placeholder="cpf" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input class="form-control" name="login_senha_usuario" id="login_senha_usuario" placeholder="Senha" type="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="pull-right">
+                                <input type="button" id="logar_btn" value="Logar" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
