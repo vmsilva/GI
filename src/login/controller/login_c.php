@@ -46,6 +46,8 @@
             $_SESSION['login'] =  $cpf;
             $_SESSION['senha'] =  $senha;
             exit('1');
+            
+            
             $ret = array(
                 'ret'=>'true'
             );
@@ -56,6 +58,8 @@
             unset($_SESSION['login']);
             unset($_SESSION['senha']);
             exit('0');
+            
+            
             $ret = array(
                 'ret'=>'false'
             );

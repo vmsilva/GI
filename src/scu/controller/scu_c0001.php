@@ -1,10 +1,12 @@
 <?php session_start();
+    if((!isset( $_SESSION['login'] ) === true ) and (!isset( $_SESSION['senha'] ) === true)){
+        
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);        
+        header('location:../../../index.html');
+        session_destroy();
+    }
     
-//    if((!isset( $_SESSION['login'] ) === true ) and (!isset( $_SESSION['senha'] ) === true)){
-//        
-//    }else{
-//        
-//    }
     require_once '../model/SCU_M0001.php';
     
     switch(trim($_POST['opr'])){
