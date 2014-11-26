@@ -1,0 +1,72 @@
+CREATE SCHEMA `GI` ;
+
+CREATE TABLE `SGI`.`scu_t0001` (
+  `cd_usu` INT NOT NULL AUTO_INCREMENT,
+  `nm_usu` VARCHAR(45) NULL,
+  `email_usu` VARCHAR(45) NULL,
+  `senha_usu` VARCHAR(300) NULL,
+  `cpf_usu` VARCHAR(45) NULL,
+  `dt_nasc_usu` VARCHAR(45) NULL,
+  `fn_usu` VARCHAR(45) NULL,
+  `st_usu` INT NOT NULL,
+  PRIMARY KEY (`cd_usu`));
+
+CREATE TABLE `SGI`.`scf_t0001` (
+  `cd_forn` INT NOT NULL AUTO_INCREMENT,
+  `nm_forn` VARCHAR(45) NULL,
+  `cnpj_forn` VARCHAR(45) NULL,
+  `desc_forn` VARCHAR(300) NULL,
+  `end_forn` VARCHAR(45) NULL,
+  `fn_forn` VARCHAR(45) NULL,
+  `email_forn` VARCHAR(45) NULL,
+  PRIMARY KEY (`cd_forn`));
+
+CREATE TABLE `SGI`.`scm_t0001` (
+  `cd_mem` INT NOT NULL AUTO_INCREMENT,
+  `nm_mem` VARCHAR(50) NOT NULL,
+  `nm_mae_mem` VARCHAR(50) NOT NULL,
+  `email_mem` VARCHAR(50) NOT NULL,
+  `dt_nasc_mem` VARCHAR(45) NOT NULL,
+  `est_civ_mem` VARCHAR(45) NOT NULL,
+  `end_mem` VARCHAR(45) NOT NULL,
+  `cpf_mem` VARCHAR(45) NOT NULL,
+  `loc_bat_mem` VARCHAR(45) NOT NULL,
+  `st_mem` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`cd_mem`));
+
+
+CREATE TABLE `SGI`.`scd_t0001` (
+  `cd_diz` INT NOT NULL AUTO_INCREMENT,
+  `vl_diz` DOUBLE NOT NULL,
+  `dt_entr_diz` VARCHAR(45) NOT NULL,
+  `desc_diz` VARCHAR(300) NOT NULL,
+  PRIMARY KEY (`cd_diz`));
+
+
+CREATE TABLE `SGI`.`scb_t0001` (
+  `cd_bol` INT NOT NULL AUTO_INCREMENT,
+  `desc_bol` DOUBLE NOT NULL,
+  `vl_bol` DOUBLE NOT NULL,
+  `dt_venc_bol` VARCHAR(45) NOT NULL,
+  `dt_pg_bol` VARCHAR(45) NOT NULL,
+  `cd_forn` INT NOT NULL,
+  PRIMARY KEY (`cd_bol`));
+
+ALTER TABLE `SGI`.`scd_t0001` 
+ADD COLUMN `cd_mem` INT NOT NULL AFTER `desc_diz`,
+ADD INDEX `fk_scd_t0001_cd_mem_idx` (`cd_mem` ASC);
+ALTER TABLE `SGI`.`scd_t0001` 
+ADD CONSTRAINT `fk_scd_t0001_cd_mem`
+  FOREIGN KEY (`cd_mem`)
+  REFERENCES `SGI`.`scm_t0001` (`cd_mem`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `SGI`.`scb_t0001` 
+ADD INDEX `fk_scb_t0001_cd_forn_idx` (`cd_forn` ASC);
+ALTER TABLE `SGI`.`scb_t0001` 
+ADD CONSTRAINT `fk_scb_t0001_cd_forn`
+  FOREIGN KEY (`cd_forn`)
+  REFERENCES `SGI`.`scf_t0001` (`cd_forn`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
