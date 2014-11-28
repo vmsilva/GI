@@ -1,6 +1,6 @@
 <?php
 
-include '../../../public/util/Conexao.php';
+include '../../../library/util/Conexao.php';
 
 class LOGIN {
     

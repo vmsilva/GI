@@ -70,7 +70,8 @@ var pacote_SCU = {
             
             this.Excluir = function(){};
             this.Alterar = function(){};
-            this.Buscar  = function(){
+            
+            this.Buscar  = function(data){
                 
                 var url = '../../../../src/scu/controller/scu_c0001.php';
                 var opr = 'buscar';
@@ -89,51 +90,30 @@ var pacote_SCU = {
                     },
                     dataType: 'json',
                     success: function(data) {
+                       console.log(data);
                        var html = "";
-                       for($i=0; $i < data.length; $i++){
-                           
-                           html += "<tr class='gradeA odd'>";
-                           html += "<td>"+ data[$i].nm_usu+"</td>";
-                           html += "<td>"+ data[$i].email_usu+"</td>";
-                           html += "<td>"+ data[$i].dt_nasc_usu+"</td>";
-                           html += "<td>"+ data[$i].cpf_usu+"</td>";                           
-                           html += "</tr>";
-                           //html += "<strong>Nome:</strong> "+data[$i].nm_usu +" "+ data[$i].dt_nasc_usu;            
-                       }
-                       console.log(html);
-                       $("#scu_h0001-tb tbody").html(html);
-                       //$("#minhaTabela tbody").html(itens);
-                        
-//                        for(var i = 0; i<result.length; i++){
-//                            
-//				    itens += "<tr>";
-//				    itens += "<td>" + result[i].cd_usu + "</td>";
-//				    itens += "<td>" + result[i].nm_usu + "</td>";
-//				    itens += "<td>" + result[i].email_usu + "</td>";
-//				    itens += "<td>" + result[i].cpf_usu + "</td>";
-//				    itens += "<td>" + result[i].dt_nasc_usu + "</td>";
-//				    itens += "<td>" + result[i].fn_usu + "</td>";
-//				    itens += "<td>" + result[i].st_usu + "</td>";
-//				    itens += "</tr>";
-//			    }
-//                            
-//                            alert(itens);
-                        
-//                        $(function(){
-//$("#gcd-ct-extrato").addClass("gcd-loading");
-//
-//$.getJSON("json/extrato.json", function(data){
-//$.each(data.DADOS, function(i, item){
-//$("#extrato-usuario tbody").append(
-//‘<tr class="’+ item.credito +’" title="’ + item.descricao + ‘">
-//<td>’+item.estabelecimento+'</td>
-//<td class="gcd-extrato-centro">’ + item.dia + ‘</td>
-//<td class="gcd-extrato-centro ‘ + item.lancamento +’">’
-//+ item.valor + ‘
-//</td>
-//</tr>’);
-//});
+//                       for($i=0; $i < data.length; $i++){
+//                           id='scu_h0001-tbl_linha"+$i+"'
+//                           html += "<tr  class='gradeA odd'>";
+//                           html += "<td class='tdd'>"+ data[$i].nm_usu+"</td>";
+//                           html += "<td class='tdd'>"+ data[$i].email_usu+"</td>";
+//                           html += "<td class='tdd'>"+ data[$i].dt_nasc_usu+"</td>";
+//                           html += "<td class='tdd'>"+ data[$i].cpf_usu+"</td>";
+//                           html += "<input class='tdd' type='hidden' id='cd_usu_"+$i+" value="+data[$i].cd_usu+"'/>";
+//                           html += "<input class='tdd' type='hidden' id='fn_usu_"+$i+" value="+data[$i].fn_usu+"'/>";
+//                           html += "<input class='tdd' type='hidden' id='st_usu_"+$i+" value="+data[$i].st_usu+"'/>";
+//                           html += "</tr>";
+//                          
+//                       }      
+//                       
+//                       $("#scu_h0001-tb tbody").html(html);
+//                       $("#scu_h0001-tb tbody").find('tr .tdd').click(function(){
+//                          
+//                                   console.log($(".tdd").text());
+//                           // $('#scu_h0001-nm_usu').val($(this).data().data.nm_usu);
+//                       });
                     }
+                    
                 });
             };
             
@@ -146,24 +126,6 @@ pacote_SCU.Scu.m0001.prototype;
 
 
 
-
-// Js pai com todos os scripts do modulo SCU
-//$(document).ready(function(){    
-//    $('#btn_teste').click(function(){
-//        $.ajax({
-//            url:'../../../../src/scu/controller/scu_c0001.php',
-//            type:'POST',
-//            data: {
-//                opr:'Cadastrar',
-//                nm_usu: 'nm_usu'                
-//            },
-//            dataType: 'html',
-//            success: function(result) {
-//                $('#index_dv_sucesso').append(result);
-//            }
-//        });
-//    });
-//    
-//});
+    
 
 

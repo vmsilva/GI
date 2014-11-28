@@ -1,3 +1,9 @@
+<?php session_start();
+if(!isset($_SESSION['login'])){
+    echo "<script type='text/javascript'>location.href = './index.html';</script>";
+    exit();
+}else{
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,9 +13,6 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content="Avant">
             <meta name="author" content="The Red Team">            
-
-            
-            
         <!-- Imports css Theme -->
         <link rel="stylesheet" href="library/bootstrap/css/styles.css?=120">        
         <link href="library/bootstrap/css/variations/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
@@ -20,8 +23,6 @@
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/codeprettifier/prettify.css"/>
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/form-toggle/toggles.css"/>        
         
-           
-        
         
         <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>-->
         
@@ -29,26 +30,38 @@
     </head>
     <body>
         <div id="index_dv_sucesso"></div>
-        
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg"></div>
         </div>        
         <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
             <a id="leftmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="right" title="" data-original-title="Toggle Sidebar"></a>
-            <ul class="nav navbar-nav pull-right toolbar">        
+            <ul class="nav navbar-nav pull-right toolbar">                
                 <li class="dropdown demodrop">
                     <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><i class="pull-right fa fa-power-off"></i></span></a>
                     <ul class="dropdown-menu userinfo arrow">        			
                         <li class="userlinks">
                             <ul class="dropdown-menu">                                    
-                                <li><a href="login.html" class="text-right">Sair</a></li>
+                                <li><a href="logout.php" class="text-right">Sair</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>                
+            </ul>            
+            <ul class="nav navbar-nav pull-right toolbar">                
+                <li class="dropdown demodrop">
+                    <i class="fa fa-user"></i>
+                    <span >
+                        <?php echo $_SESSION['login'] ?>
+                    </span>                    
+                </li>                
             </ul>
+            
+            
+            
+            
         </header>        
         <nav id="page-leftbar" role="navigation">
+            
             <ul class="acc-menu" id="sidebar">  
                 <li><a href="javascript:;"><i class="fa fa-user"></i><span>Usuario</span></a>
                     <ul class='acc-menu' id="index_menu_cad" style="display: none;" >
@@ -58,20 +71,21 @@
                 <li class="divider"></li>
                 <li><a href="javascript:;"><i class="fa fa-truck"></i><span>Fornecedor</span></a>
                     <ul class='acc-menu' id="" style="display: none;" >
-                        <li><a   href="src/scu/view/scu_h0001.html" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>                        
+                        <li><a   href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>                        
                     </ul>
                 </li>
                 <li class="divider"></li>
                 <li><a href="javascript:;"><i class="fa fa-book"></i><span>Membro</span></a>
                     <ul class='acc-menu' id="" style="display: none;" >
-                        <li><a   href="src/scu/view/scu_h0001.html" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>
-                        <li><a   href="src/scu/view/scu_h0001.html" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-list-alt"></i>Listar</a></li>
+                        <li><a   href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>
+                        <li><a   href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-list-alt"></i>Listar</a></li>
                     </ul>
                 </li>
+                
                 <li class="divider"></li>
                 
                 <li class="hasChild"> <a href="javascript:;"><i class="fa fa-money"></i><span>Financeiro</span></a>
-                    <ul class="acc-menu" style="display: block;">
+                    <ul class="acc-menu" style="display: none;">
                         <li class="hasChild"><a href="javascript:;"><i class="fa fa-usd"></i><span>Dizimo</span></a>
                             <ul class="acc-menu">
                                 <li><a href="javascript:;"><i class="fa  fa-pencil"></i>Cadastrar</a></li>
@@ -79,12 +93,23 @@
                         </li>                        
                         <li class="hasChild"><a href="javascript:;"><i class="fa fa-file-text-o"></i><span>Boleto</span></a>
                             <ul class="acc-menu">
-                                <li><a href="javascript:;"><i class="fa  fa-pencil"></i>Cadastrar</a></li>                                
+                                <li><a href="javascript:; " data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>                                
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li class="divider"></li>                
+                           
+                <li class="divider"></li>
+                
+                <li><a href="javascript:;"><i class="fa fa-home"></i><span>Patrimonio</span></a>
+                    <ul class='acc-menu' id="" style="display: none;" >
+                        <li><a   href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>                        
+                    </ul>
+                </li>
+                
+                <li class="divider"></li>               
+
+                
             </ul>            
         </nav>          
 
@@ -119,6 +144,4 @@
         
     </body>
 </html>
-
-
-
+<?php } ?>

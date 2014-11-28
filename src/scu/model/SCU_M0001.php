@@ -1,17 +1,18 @@
 <?php
+//      Classe Usuario
 
-    include '../../../public/util/Conexao.php';
+    include '../../../library/util/Conexao.php';
     
 class SCU_M0001 {
 
-    private Static $cd_usu;
-    private Static $nm_usu;
-    private Static $dt_nasc_usu;
-    private Static $email_usu;
-    private Static $senha_usu;
-    private Static $cpf_usu;
-    private Static $fn_usu;
-    private Static $st_usu;
+    private Static $cd_usu;         // Codigo Usuario
+    private Static $nm_usu;         // Nome Usuario
+    private Static $dt_nasc_usu;    // Data Nascimento usuario
+    private Static $email_usu;      // Email Usuario
+    private Static $senha_usu;      // Senha Usuario
+    private Static $cpf_usu;        // Cpf Usuario
+    private Static $fn_usu;         // Telefone Usuario
+    private Static $st_usu;         // Status Usuario
 
     public static function getCd_usu() {
         return self::$cd_usu;
@@ -77,7 +78,8 @@ class SCU_M0001 {
         self::$st_usu = $st_usu;
     }
 
-
+    
+    // Inserir Usuario
     public static function Inserir(){
     
         $strsql = 'INSERT INTO SGI.scu_t0001(nm_usu, dt_nasc_usu, email_usu, senha_usu, cpf_usu, fn_usu, st_usu)'
@@ -98,41 +100,31 @@ class SCU_M0001 {
          
     }
     
+    // Excluir Usuario
     public static function Excluir(){}
+    // Alterar Usuario
     public static function Alterar(){}
-    
+    // Buscar Usuario
     public static function Buscar(){
         
-        $strsql = "SELECT * FROM SGI.scu_t0001";        
+        $strsql = "SELECT * FROM SGI.scu_t0001";  
         
+        if(self::$nm_usu != '' || self::$nm_usu != NULL)
+            $strsql .= " WHERE SGI.scu_t0001.nm_usu ='".self::$nm_usu."'";
+        if(self::$cpf_usu != '' || self::$cpf_usu != NULL)
+            $strsql .= " and SGI.scu_t0001.cpf_usu ='".self::$cpf_usu."'";
+        
+       
         
         $pdo = Conexao::getInstance();        
         $persist = $pdo->query($strsql);
         $persist->execute();
         
-        return json_encode($persist->fetchAll(PDO::FETCH_OBJ));
-        //return $persist->fetch(PDO::FETCH_ASSOC);
-         
+        return $persist->fetchAll(PDO::FETCH_OBJ);   
+        //return json_encode($persist->fetchAll(PDO::FETCH_OBJ));   
         
         
     }
-    
-    
-//    if(self::getCd_usu() !== ''|| self::getCd_usu() !== NULL){ 
-//            $strsql .= " WHERE scu_t0001.cd_usu = ".self::getCd_usu();
-//            
-//        }
-//        
-//        if(self::getCpf_usu() !== '' and self::getCd_usu() === '' || self::getCd_usu() === NULL){
-//            $strsql .= " WHERE scu_t0001.cpf_usu =".self::getCpf_usu ();
-//        }else {
-//            $strsql .= " AND scu_t0001.cpf_usu =".self::getCpf_usu ();
-//        }   
-//        
-//        if(self::getSenha_usu() !== ''){
-//            $strsql .= " AND scu_t0001.senha_usu =".self::getSenha_usu ();            
-//        }
-//      return $strsql;
     
     
 }

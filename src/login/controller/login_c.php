@@ -1,11 +1,6 @@
-<?php     session_start();    
+<?php
      
     require_once '../../../../GI/src/login/model/LOGIN.php';
-    
-    
-//    ini_set('display_errors',1);
-//    ini_set('display_startup_erros',1);
-//    error_reporting(E_ALL);
         
     $opr = $_POST['opr'];  
     
@@ -23,12 +18,16 @@
         $senha = $_POST['login_senha_usuario'];
         
         if(trim($cpf) == '' || trim($cpf) == NULL){
-            echo "CPF Vazio!";
+            $json['ret'] = 'false';
+            $json['msg'] = 'Cpf Vazio!';
+            echo json_encode($json);
             exit();            
         }
         
         if($senha == '' || $senha == NULL){
-            echo 'SENHA Vazio!';
+            $json['ret'] = 'false';
+            $json['msg'] = 'Senha Vazio!';
+            echo json_encode($json);
             exit();
         }
         
@@ -38,33 +37,34 @@
         
         LOGIN::setCpf_usuario($cpf);
         LOGIN::setSenha_usuario($senha);
-        $rs = LOGIN::Logar();
-        
+        $rs = LOGIN::Logar();        
                 
         if($rs){
             
+            session_start();
+            
+            $_SESSION['SGI']  = session_id();
+            $_SESSION['logado'] = strtotime('now') ;
             $_SESSION['login'] =  $cpf;
-            $_SESSION['senha'] =  $senha;
-            exit('1');
+            //$_SESSION['nm_usu'] = $rs['nm_usu'];
             
-            
-            $ret = array(
-                'ret'=>'true'
-            );
+            $ret['ret']= 'true';
+            $ret['url']= './../../../../menu.php';
             echo json_encode($ret);
-            exit();
         }else{
             
             unset($_SESSION['login']);
-            unset($_SESSION['senha']);
-            exit('0');
+            unset($_SESSION['SGI']);
+            unset($_SESSION['logado']);
+            unset($_SESSION['nm_usu']);
             
+            $json['ret']= 'false';
+            $json['msg']= ' Cpf ou Senha Invalidos';
+            echo json_encode($json);
+            echo "<script type='text/javascript'>location.href = './index.html';</script>";            
+            exit();
             
-            $ret = array(
-                'ret'=>'false'
-            );
-            echo json_encode($ret);
-            exit();           
+                      
         }
     }
     

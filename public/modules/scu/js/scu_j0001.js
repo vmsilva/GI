@@ -40,8 +40,25 @@ $(function(){
         this.Excluir = function(){};
         this.Buscar = function(){
             
-            SCU_M0001.Buscar();
-            
+            SCU_M0001.Buscar(function(data){
+                       var html = "";
+                       for($i=0; $i < data.length; $i++){
+                           //id='scu_h0001-tbl_linha"+$i+"'
+                           html += "<tr  class='gradeA odd'>";
+                           html += "<td class='td_data_"+$i+"'>"+ data[$i].nm_usu+"</td>";
+                           html += "<td class='td_data_"+$i+"'>"+ data[$i].email_usu+"</td>";
+                           html += "<td class='td_data_"+$i+"'>"+ data[$i].dt_nasc_usu+"</td>";
+                           html += "<td class='td_data_"+$i+"'>"+ data[$i].cpf_usu+"</td>";
+                           html += "<input class='td_data_"+$i+"' type='hidden' id='cd_usu_"+$i+" value="+data[$i].cd_usu+"'/>";
+                           html += "<input class='td_data_"+$i+"' type='hidden' id='fn_usu_"+$i+" value="+data[$i].fn_usu+"'/>";
+                           html += "<input class='td_data_"+$i+"' type='hidden' id='st_usu_"+$i+" value="+data[$i].st_usu+"'/>";
+                           html += "</tr>";                             
+                       }      
+                    $("#scu_h0001-tb tbody").html(html);    
+                //alert(jQuery('.td_data_'));
+                
+            });
+          
         };
         
         this.Limpar = function(){

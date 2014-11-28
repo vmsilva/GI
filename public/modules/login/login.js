@@ -7,15 +7,12 @@ $(function(){
     });
      
      this.Logar = function(){
-            var index = '../../../menu.html';
+         
             var cpf   = $('#login_cpf_usuario').val();
             var senha = $('#login_senha_usuario').val();
             var opr   = 'logar';
             var url   = '../../../src/login/controller/login_c.php';
-            var erro  = "<div class='alert alert-dismissable alert-danger'>\n\
-                    <strong>Erro!</strong> Usuario ou Senha Invalidos \n\
-                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>\n\
-                    </div>";
+            var erro  = "<div class='alert alert-danger alert-dismissable'><i class='fa fa-ban'></i><button class='close' aria-hidden='true' data-dismiss='alert' type='button'>×</button><b>Alert!</b></div>";
            $.ajax({
                url: url,
                type: 'POST',
@@ -24,21 +21,20 @@ $(function(){
                   login_cpf_usuario:cpf,
                   login_senha_usuario: senha
                },
-               dataType:'html',
-               success: function(result){           
+               dataType:'json',
+               success: function(result){
+                   console.log(result.ret);
+                   if(result.ret === 'true'){
+                       window.location = result.url;
+                   }else{                       
+                        $('#login_dv-retorno').html("<div class='alert alert-danger alert-dismissable'>\n\
+                        <i class='fa fa-ban'></i>\n\
+                        <strong> Erro!: </strong> "+ result.msg +" \n\
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>\n\
+                        </div>");                       
+                   }                 
                    
-                   if(result === '1'){
-                       console.log(result.ret);
-                       $(window.document.location).attr('href',index);                       
-                   }else if(result === '0'){
-                       $('#login_dv-retorno').html(erro);
-                   }else if( result === 'CPF Vazio!' || result === 'SENHA Vazio!'){
-                        $('#login_dv-retorno').html("<div class='alert alert-dismissable alert-danger'>\n\
-                    <strong>Erro!</strong> "+ result +" \n\
-                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>\n\
-                    </div>");
-                   }
-                                      
+                   return;                                      
                }
            });
      }
