@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <header>
+            <div class="alert alert-success alert-dismissable">
+                <i class="fa fa-check"></i>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <b>Alert!</b> Success alert preview. This alert is dismissable.
+            </div>
+        </header>
+
+        <div id="scd_h0001-dv">
+            <div class="modal-dialog modal-lg" id="scm_h0001-dv">            
+                <div class="modal-content">
+                    <input type='hidden' name='scm_h0001-cd_mem' id='scm_h0001-cd_mem' />
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="scm_h0001-btn_minimizar">×</button>
+                            <h4 class="modal-title">Entrada Dizimo</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="scd_h0001-cd_dizimo"/>
+                            <div class="form-group">
+                                <label>Membro</label>
+                                <input disabled class="form-control" name="scm_h0001-nm_mem" id="scm_h0001-nm_mem"/>
+                                <p class="help-block">Nome completo Membro</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Valor</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text" name="scd_h0001-vl_diz"  id="scd_h0001-vl_diz" class="form-control">
+                                    <span class="input-group-addon">.00</span>                                    
+                                </div>
+                                <p class="help-block">Valor Dizimo</p>
+                            </div>         
+
+                            <div class="form-group">
+                                <label>Data</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type='text' name="scd_h0001-dt_entr_diz"  id="scd_h0001-dt_entr_diz" class="form-control mask" data-inputmask="'alias': 'date'"  />
+                                </div>
+                                <p class="help-block">Data Entrada Dizimo</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <div class="input-group">
+                                    <textarea name="scd_h0001-desc_diz" id="scd_h0001-desc_diz" class="form-control autosize" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 52px; margin-left: 0px; margin-right: -228px; width: 537px;"></textarea>
+                                </div>
+                                <p class="help-block">Descrição Dizimo</p>
+                            </div>  
+
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" name="scm_h0001-btn_incluir" id="scm_h0001-btn_incluir">Incluir</button>
+                            <button type="button" class="btn btn-primary" name="scm_h0001-btn_excluir" id="scm_h0001-btn_excluir">Excluir</button>
+                            <button type="button" class="btn btn-default" name="scm_h0001-btn_limpar"  id="scm_h0001-btn_limpar">Limpar</button>
+
+                        </div>                        
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>                         
+        </div>
+    </body>
+</html>

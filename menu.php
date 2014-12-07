@@ -21,18 +21,22 @@ if(!isset($_SESSION['login'])){
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/fullcalendar/fullcalendar.css "/>
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/form-markdown/css/bootstrap-markdown.min.css"/>
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/codeprettifier/prettify.css"/>
-        <link rel="stylesheet" type="text/css" href="library/bootstrap/css/form-toggle/toggles.css"/>        
+        <link rel="stylesheet" type="text/css" href="library/bootstrap/css/form-toggle/toggles.css"/>  
+        
         
         
         <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>-->
         
         
-    </head>
-    <body>
-        <div id="index_dv_sucesso"></div>
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg"></div>
-        </div>        
+    </head>    
+    <body background="public/pictures/Branco.jpg">        
+        
+        <!--<div id="index_opcao">  -->  
+            <div id="menu_frm" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg " ></div>
+            </div> 
+        <!--</div>-->
+        
         <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
             <a id="leftmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="right" title="" data-original-title="Toggle Sidebar"></a>
             <ul class="nav navbar-nav pull-right toolbar">                
@@ -54,18 +58,17 @@ if(!isset($_SESSION['login'])){
                         <?php echo $_SESSION['login'] ?>
                     </span>                    
                 </li>                
-            </ul>
+            </ul>           
             
             
-            
-            
-        </header>        
-        <nav id="page-leftbar" role="navigation">
+        </header>      
+                    
+        <nav id="page-leftbar" role="navigation">               
             
             <ul class="acc-menu" id="sidebar">  
                 <li><a href="javascript:;"><i class="fa fa-user"></i><span>Usuario</span></a>
-                    <ul class='acc-menu' id="index_menu_cad" style="display: none;" >
-                        <li><a   href="src/scu/view/scu_h0001.html" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>                        
+                    <ul class='acc-menu' id="index_menu_cad_usuario" style="display: none;" >
+                        <li><a data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>                        
                     </ul>
                 </li>
                 <li class="divider"></li>
@@ -76,9 +79,9 @@ if(!isset($_SESSION['login'])){
                 </li>
                 <li class="divider"></li>
                 <li><a href="javascript:;"><i class="fa fa-book"></i><span>Membro</span></a>
-                    <ul class='acc-menu' id="" style="display: none;" >
-                        <li><a   href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>
-                        <li><a   href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-list-alt"></i>Listar</a></li>
+                    <ul class='acc-menu' id="index_menu_cad_membro" style="display: none;" >
+                        <li><a data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>
+                        <li><a data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-list-alt"></i>Listar</a></li>
                     </ul>
                 </li>
                 
@@ -87,8 +90,8 @@ if(!isset($_SESSION['login'])){
                 <li class="hasChild"> <a href="javascript:;"><i class="fa fa-money"></i><span>Financeiro</span></a>
                     <ul class="acc-menu" style="display: none;">
                         <li class="hasChild"><a href="javascript:;"><i class="fa fa-usd"></i><span>Dizimo</span></a>
-                            <ul class="acc-menu">
-                                <li><a href="javascript:;"><i class="fa  fa-pencil"></i>Cadastrar</a></li>
+                            <ul class="acc-menu" id="index_menu_cad_dizimo">
+                                <li><a data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa  fa-pencil"></i>Cadastrar</a></li>
                             </ul>
                         </li>                        
                         <li class="hasChild"><a href="javascript:;"><i class="fa fa-file-text-o"></i><span>Boleto</span></a>
@@ -138,9 +141,11 @@ if(!isset($_SESSION['login'])){
         <script type='text/javascript' src='library/bootstrap/js/prettify.js'></script>
         <script type='text/javascript' src='library/bootstrap/js/toggle.min.js'></script>
         <script type="text/javascript" src="public/js/menu.js"></script>
-        <script type='text/javascript' src='library/bootstrap/js/application.js'></script>                
+        <script type='text/javascript' src='library/bootstrap/js/application.js'></script> 
+        <script type='text/javascript' src='library/bootstrap/js/demo.js'></script>     
+        <script type="text/javascript" src="library/jQuery/jquery.maskedinput.js"></script>               
         <script type="text/javascript" src="public/modules/scu/js/scu.js"></script>
-        <script type='text/javascript' src='library/bootstrap/js/demo.js'></script>          
+        <script type="text/javascript" src="public/modules/scm/js/scm.js"></script>
         
     </body>
 </html>

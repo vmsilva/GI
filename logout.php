@@ -1,6 +1,4 @@
 <?php session_start();
-    echo $_SESSION['nm_usu'];
-    exit();
     unset($_SESSION['login']);
     unset( $_SESSION['SGI']);
     unset( $_SESSION['nm_usu']);

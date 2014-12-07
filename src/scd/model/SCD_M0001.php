@@ -44,7 +44,30 @@ class SCD_M0001 {
     }
     
     // Função que Inserir Dizimo
-    Public Static function Inserir(){}
+    Public Static function Inserir(){
+        
+        $strsql = 'INSERT INTO SGI.scu_t0001(vl_diz, dt_entr_diz, desc_diz)'
+        . 'VALUES(:vl_diz, :dt_entr_diz, :desc_diz)';
+        
+        try{  
+            
+            $pdo = Conexao::getInstance();
+            $persist = $pdo->prepare($strsql);
+            $persist->bindValue(":vl_diz", self::getVl_diz());
+            $persist->bindValue(":dt_entr_diz", self::getDt_entr_diz());
+            $persist->bindValue(":desc_diz", self::getDesc_diz());
+            
+            return $persist->execute();
+            
+        }catch(Exception $e){
+            
+            return 'Erro'.$e;
+        }
+        
+    }
+    
+    // Função que Exclui Dizimo
+    Public Static function Excluir(){}
     
     //Funçao que Lista Dizimo
     Public Static function Listar(){} 

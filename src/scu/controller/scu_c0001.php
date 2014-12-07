@@ -131,18 +131,23 @@
         
     }
     function Buscar(){
-        
-        $cd_usu = $_POST['cd_usu'];
-        $cpf_usu = $_POST['cpf_usu'];
-        $senha_usu = $_POST['senha_usu'];
-        
-        
-        SCU_M0001::setCpf_usu($cpf_usu);
-        SCU_M0001::setSenha_usu($senha_usu);        
-        $rs = SCU_M0001::Buscar();
+             
 
-        echo json_encode($rs);
-        exit();
+        $dados = array();
+        $rs = SCU_M0001::Buscar();       
+        if(count($rs)>0){
+            foreach ($rs as $key => $value) {
+                $dados[$key] = (array)$rs[$key];
+            }
+
+            $json['ret'] = 'true';
+            $json['dados'] = $dados;
+            echo json_encode($json);
+        }else{
+            $json['ret'] = 'false';
+            $json['msg'] = 'Erro: Nenhum Registro Cadastrado!';
+            echo json_encode($json);
+        }
         
     }
 

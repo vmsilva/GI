@@ -59,10 +59,12 @@ var pacote_SCU = {
                     },
                     dataType: 'html',
                     success: function(result) {
-                        //$('#index_dv_sucesso').append(result);
-                        $('#index_dv_sucesso').append('<div class/="alert alert-success/">\n\
-                        <a href="#" class="close" data-dismiss="alert">&times;</a> <strong>Success!</strong>\n\
-                        '+result+'</div>');    
+                        
+                        $('#menu_dv_retorno').html("<div class='alert alert-danger alert-dismissable'>\n\
+                        <i class='fa fa-ban'></i>\n\
+                        <strong> Erro!: </strong> "+ result.msg +" \n\
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>\n\
+                        </div>");   
                     }
                 });
                 
@@ -90,28 +92,32 @@ var pacote_SCU = {
                     },
                     dataType: 'json',
                     success: function(data) {
-                       console.log(data);
+
                        var html = "";
-//                       for($i=0; $i < data.length; $i++){
-//                           id='scu_h0001-tbl_linha"+$i+"'
-//                           html += "<tr  class='gradeA odd'>";
-//                           html += "<td class='tdd'>"+ data[$i].nm_usu+"</td>";
-//                           html += "<td class='tdd'>"+ data[$i].email_usu+"</td>";
-//                           html += "<td class='tdd'>"+ data[$i].dt_nasc_usu+"</td>";
-//                           html += "<td class='tdd'>"+ data[$i].cpf_usu+"</td>";
-//                           html += "<input class='tdd' type='hidden' id='cd_usu_"+$i+" value="+data[$i].cd_usu+"'/>";
-//                           html += "<input class='tdd' type='hidden' id='fn_usu_"+$i+" value="+data[$i].fn_usu+"'/>";
-//                           html += "<input class='tdd' type='hidden' id='st_usu_"+$i+" value="+data[$i].st_usu+"'/>";
-//                           html += "</tr>";
-//                          
-//                       }      
-//                       
-//                       $("#scu_h0001-tb tbody").html(html);
-//                       $("#scu_h0001-tb tbody").find('tr .tdd').click(function(){
-//                          
-//                                   console.log($(".tdd").text());
-//                           // $('#scu_h0001-nm_usu').val($(this).data().data.nm_usu);
-//                       });
+                       var lista = new Array();
+                       lista.push(data.dados);
+                       
+                       for($i=0; $i < lista[0].length; $i++){                     
+                           html += "<tr data-data='"+JSON.stringify(lista[0][$i])+"'>";
+                           html += "<td class='cel_"+$i+"'>"+ lista[0][$i].nm_usu+"</td>";
+                           html += "<td class='cel_"+$i+"'>"+ lista[0][$i].email_usu+"</td>";
+                           html += "<td class='cel_"+$i+"'>"+ lista[0][$i].dt_nasc_usu+"</td>";
+                           html += "<td class='cel_"+$i+"'>"+ lista[0][$i].cpf_usu+"</td>";
+                           html += "</tr>";                          
+                       }      
+                       
+                       $("#scu_h0001-tb tbody").html(html);
+                       
+                       $('#scu_h0001-tb').find('tbody tr').click(function(){
+                           var dados = $(this).data().data;
+                           $('#scu_h0001-nm_usu').val(dados.nm_usu);
+                           $('#scu_h0001-dt_nasc_usu').val(dados.dt_nasc_usu);
+                           $('#scu_h0001-email_usu').val(dados.email_usu);
+                           $('#scu_h0001-cpf_usu').val(dados.cpf_usu);
+                           $('#scu_h0001-fn_usu').val(dados.fn_usu);
+                           $('#scu_h0001-st_usu').val(dados.st_usu);
+                       });
+        
                     }
                     
                 });

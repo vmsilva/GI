@@ -98,13 +98,61 @@ class SCM_M0001 {
     }
 
     // Inserir Fornecedor
-    Public Static function Inserir(){}
+    Public Static function Inserir(){
+        
+        $strsql = 'INSERT INTO SGI.scm_t0001(nm_mem, nm_mae_mem, email_mem, dt_nasc_mem, est_civ_mem, cpf_mem, loc_bat_mem, st_mem)'
+        . 'VALUES(:nm_mem, :nm_mae_mem, :email_mem, :dt_nasc_mem, :est_civ_mem, :cpf_mem, :loc_bat_mem, :st_mem)';
+    
+        try{ 
+            
+            $pdo = Conexao::getInstance();
+            $persist = $pdo->prepare($strsql);
+            $persist->bindValue(":nm_mem", self::getNm_mem());
+            $persist->bindValue(":nm_mae_mem", self::getNm_mae_mem());
+            $persist->bindValue(":email_mem", self::getEmail_mem());
+            $persist->bindValue(":dt_nasc_mem", self::getDt_nasc_mem());
+            $persist->bindValue(":est_civ_mem", self::getEst_civ_mem());
+            $persist->bindValue(":cpf_mem", self::getCpf_mem());
+            $persist->bindValue(":loc_bat_mem", self::getLoc_bat_mem());
+            $persist->bindValue(":st_mem", self::getSt_mem());
+            
+            return $persist->execute();
+            
+        }catch(Exception $e){
+            
+            return 'Erro'.$e;
+        }
+    }
     // Alterar Fornecedor
     Public Static function Alterar(){}
     // Excluir  Fornecedor
     Public Static function Excluir(){}
     //  Listar Fornecedor
-    Public Static function Listar(){}
+    Public Static function Buscar(){
+        
+        $strsql = "SELECT * FROM SGI.scm_t0001 ";          
+        
+        if(trim(self::getNm_mem()) !== '' || trim(self::getNm_mem()) !== NULL){                    
+            $strsql .= " WHERE SGI.scm_t0001.nm_mem like'%". self::getNm_mem() ."%'";          
+        }   
+        
+        return $strsql;       
+        
+        try{
+            
+            $pdo = Conexao::getInstance();        
+            $persist = $pdo->query($strsql);
+            $persist->execute();
+
+            return $persist->fetchAll(PDO::FETCH_OBJ);   
+            
+        }catch(Exception $e){
+            
+            return 'Erro'.$e;
+            
+        }
+        
+    }
     
     
 }

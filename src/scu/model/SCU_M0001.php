@@ -85,18 +85,24 @@ class SCU_M0001 {
         $strsql = 'INSERT INTO SGI.scu_t0001(nm_usu, dt_nasc_usu, email_usu, senha_usu, cpf_usu, fn_usu, st_usu)'
         . 'VALUES(:nm_usu, :dt_nasc_usu, :email_usu, :senha_usu, :cpf_usu, :fn_usu, :st_usu)';
         
+        try{        
+            $pdo = Conexao::getInstance();
+            $persist = $pdo->prepare($strsql);
+            $persist->bindValue(":nm_usu", self::getNm_usu());
+            $persist->bindValue(":dt_nasc_usu", self::getDt_nasc_usu());
+            $persist->bindValue(":email_usu", self::getEmail_usu());
+            $persist->bindValue(":senha_usu", self::getSenha_usu());
+            $persist->bindValue(":cpf_usu", self::getCpf_usu());
+            $persist->bindValue(":fn_usu", self::getFn_usu());
+            $persist->bindValue(":st_usu", self::getSt_usu());
+            
+            return $persist->execute();
+            
+        }catch(Exception $e){
+            
+            return 'Erro'.$e;
+        }
                 
-        $pdo = Conexao::getInstance();
-        $persist = $pdo->prepare($strsql);
-        $persist->bindValue(":nm_usu", self::getNm_usu());
-        $persist->bindValue(":dt_nasc_usu", self::getDt_nasc_usu());
-        $persist->bindValue(":email_usu", self::getEmail_usu());
-        $persist->bindValue(":senha_usu", self::getSenha_usu());
-        $persist->bindValue(":cpf_usu", self::getCpf_usu());
-        $persist->bindValue(":fn_usu", self::getFn_usu());
-        $persist->bindValue(":st_usu", self::getSt_usu());
-        
-        return $persist->execute();        
          
     }
     
@@ -107,21 +113,21 @@ class SCU_M0001 {
     // Buscar Usuario
     public static function Buscar(){
         
-        $strsql = "SELECT * FROM SGI.scu_t0001";  
+        $strsql = "SELECT * FROM SGI.scu_t0001";        
         
-        if(self::$nm_usu != '' || self::$nm_usu != NULL)
-            $strsql .= " WHERE SGI.scu_t0001.nm_usu ='".self::$nm_usu."'";
-        if(self::$cpf_usu != '' || self::$cpf_usu != NULL)
-            $strsql .= " and SGI.scu_t0001.cpf_usu ='".self::$cpf_usu."'";
-        
-       
-        
-        $pdo = Conexao::getInstance();        
-        $persist = $pdo->query($strsql);
-        $persist->execute();
-        
-        return $persist->fetchAll(PDO::FETCH_OBJ);   
-        //return json_encode($persist->fetchAll(PDO::FETCH_OBJ));   
+        try{
+            
+            $pdo = Conexao::getInstance();        
+            $persist = $pdo->query($strsql);
+            $persist->execute();
+
+            return $persist->fetchAll(PDO::FETCH_OBJ);   
+            
+        }catch(Exception $e){
+            
+            return 'Erro'.$e;
+            
+        } 
         
         
     }
