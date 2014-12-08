@@ -5,6 +5,9 @@ $(function(){
     
     this.Inicializa = function(){       
         
+        $('#scm_h0001-dt_nasc_mem').datepicker();
+        $('#scm_h0001-cpf_mem').mask("999.999.999-99");
+        $("#scu_h0001-fn_usu").mask("(99)9999-9999");
         
         $('#scm_h0001-btn_incluir').click(function(){
             self.Incluir();

@@ -2,9 +2,23 @@ $(function(){
     
     var self = this;
     
-    $('#logar_btn').click(function(){
-        self.Logar();
-    });
+    this.Inicializar = function(){
+        
+
+        $("#login_cpf_usuario").mask("999.999.999-99");
+        
+        $('#logar_btn').click(function(){
+            self.Logar();
+        });
+        
+        self.Limpar();
+        
+    }
+    
+     this.Limpar = function(){
+         $("#login_cpf_usuario").val('');
+         $("#login_senha_usuario").val('');
+     }
      
      this.Logar = function(){
          
@@ -38,6 +52,9 @@ $(function(){
                }
            });
      }
+     
+     
+     self.Inicializar();
     
 });
 

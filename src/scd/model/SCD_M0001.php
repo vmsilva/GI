@@ -10,6 +10,7 @@ class SCD_M0001 {
     Private Static $vl_diz;         // Valor Dizimo
     Private Static $dt_entr_diz;    // Data Entrada Dizimo
     Private Static $desc_diz;       // Descrição Dizimo
+    Private Static $cd_mem;         // Codigo Membro
     
     public static function getCd_diz() {
         return self::$cd_diz;
@@ -43,11 +44,22 @@ class SCD_M0001 {
         self::$desc_diz = $desc_diz;
     }
     
+    public static function getCd_mem() {
+        return self::$cd_mem;
+    }
+
+    public static function setCd_mem($cd_mem) {
+        self::$cd_mem = $cd_mem;
+    }
+
+        
     // Função que Inserir Dizimo
     Public Static function Inserir(){
         
-        $strsql = 'INSERT INTO SGI.scu_t0001(vl_diz, dt_entr_diz, desc_diz)'
-        . 'VALUES(:vl_diz, :dt_entr_diz, :desc_diz)';
+        $strsql = 'INSERT INTO SGI.scd_t0001(vl_diz, dt_entr_diz, desc_diz, cd_mem)'
+        . 'VALUES(:vl_diz, :dt_entr_diz, :desc_diz, :cd_mem)';
+        
+        //return $strsql;
         
         try{  
             
@@ -56,6 +68,7 @@ class SCD_M0001 {
             $persist->bindValue(":vl_diz", self::getVl_diz());
             $persist->bindValue(":dt_entr_diz", self::getDt_entr_diz());
             $persist->bindValue(":desc_diz", self::getDesc_diz());
+            $persist->bindValue(":cd_mem", self::getCd_mem());
             
             return $persist->execute();
             

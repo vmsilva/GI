@@ -5,10 +5,10 @@ $(function(){
     
     this.Inicializa = function(){        
         
-        //$('#scu_h0001-dt_nasc_usu').datepicker();
-        //$('#scu_h0001-cpf_usu').mask("99/99/9999");
-        //$('#example').dataTable({});
+        $('#scu_h0001-dt_nasc_usu').datepicker();
+        $('#scu_h0001-cpf_usu').mask("999.999.999-99");
         $("#scu_h0001-dt_nasc_usu").mask("99/99/9999");
+        $("#scu_h0001-fn_usu").mask("(99)9999-9999");
         
         $('#scu_h0001-btn_incluir').click(function(){
             self.Incluir();

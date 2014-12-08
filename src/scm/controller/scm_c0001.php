@@ -116,6 +116,8 @@
             exit(); 
         }
         
+        $cpf_mem = str_replace(".", '', $cpf_mem);
+        $cpf_mem = str_replace("-", '', $cpf_mem);
         
         SCM_M0001::setNm_mem($nm_mem);
         SCM_M0001::setNm_mae_mem($nm_mae_mem);
@@ -171,9 +173,14 @@
         
         $dados = array();
         
-        SCM_M0001::setNm_mem('edil');
-        $rs = SCM_M0001::Buscar();
-        exit($rs);
+        $st_mem = $_POST['st_mem'];
+        $nm_mem = $_POST['nm_mem'];
+        
+//        SCM_M0001::setSt_mem($st_mem);
+//        SCM_M0001::setNm_mem($nm_mem);        
+        $rs = SCM_M0001::Buscar();      
+        
+        
         if(count($rs)>0){
             foreach ($rs as $key => $value) {
                 $dados[$key] = (array)$rs[$key];

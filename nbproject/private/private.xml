@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="ProjetoPHP">
-            <file>file:/var/www/GI/public/modules/scm/js/scm_j0001.js</file>
             <file>file:/var/www/GI/src/scm/controller/scm_c0001.php</file>
+            <file>file:/var/www/GI/public/modules/scd/js/scd_j0001.js</file>
             <file>file:/var/www/GI/src/scd/model/SCD_M0001.php</file>
-            <file>file:/var/www/GI/src/scm/view/scm_h0001.html</file>
-            <file>file:/var/www/GI/src/scu/controller/scu_c0001.php</file>
+            <file>file:/var/www/GI/public/js/menu.js</file>
+            <file>file:/var/www/GI/menu.php</file>
             <file>file:/var/www/GI/src/scd/controller/scd_c0001.php</file>
             <file>file:/var/www/GI/src/scm/model/SCM_M0001.php</file>
-            <file>file:/var/www/GI/src/scu/model/SCU_M0001.php</file>
+            <file>file:/var/www/GI/public/modules/scd/js/scd.js</file>
             <file>file:/var/www/GI/src/scd/view/scd_h0001.html</file>
         </group>
     </open-files>

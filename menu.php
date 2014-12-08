@@ -21,7 +21,8 @@ if(!isset($_SESSION['login'])){
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/fullcalendar/fullcalendar.css "/>
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/form-markdown/css/bootstrap-markdown.min.css"/>
         <link rel="stylesheet" type="text/css" href="library/bootstrap/css/codeprettifier/prettify.css"/>
-        <link rel="stylesheet" type="text/css" href="library/bootstrap/css/form-toggle/toggles.css"/>  
+        <link rel="stylesheet" type="text/css" href="library/bootstrap/css/form-toggle/toggles.css"/> 
+        
         
         
         
@@ -143,9 +144,11 @@ if(!isset($_SESSION['login'])){
         <script type="text/javascript" src="public/js/menu.js"></script>
         <script type='text/javascript' src='library/bootstrap/js/application.js'></script> 
         <script type='text/javascript' src='library/bootstrap/js/demo.js'></script>     
-        <script type="text/javascript" src="library/jQuery/jquery.maskedinput.js"></script>               
+        <script type="text/javascript" src="library/jQuery/jquery.maskedinput.js"></script>   
+        <script type="text/javascript" src="library/jQuery/jquery.maskMoney.js"></script>
         <script type="text/javascript" src="public/modules/scu/js/scu.js"></script>
         <script type="text/javascript" src="public/modules/scm/js/scm.js"></script>
+        <script type="text/javascript" src="public/modules/scd/js/scd.js"></script>
         
     </body>
 </html>

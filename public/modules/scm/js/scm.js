@@ -71,15 +71,12 @@ var pacote_SCM = {
                     dataType: 'json',
                     success: function(result) {
                         
-                        if(result.ret == 'true'){
-                            
-                            $('#index_dv_sucesso').append('<div class/="alert alert-success/">\n\
+                        if(result.ret == 'true'){                            
+                            $('#index_dv_sucesso').html('<div class/="alert alert-success/">\n\
                             <a href="#" class="close" data-dismiss="alert">&times;</a> <strong>Success!</strong>\n\
-                            '+result.msg+'</div>');
-                            
-                        }else if(result.ret == 'false'){
-                            
-                            $('#index_dv_sucesso').append('<div class/="alert alert-error/">\n\
+                            '+result.msg+'</div>');                            
+                        }else if(result.ret == 'false'){                            
+                            $('#index_dv_sucesso').html('<div class/="alert alert-error/">\n\
                             <a href="#" class="close" data-dismiss="alert">&times;</a> <strong>Success!</strong>\n\
                             '+result.msg+'</div>');
                             

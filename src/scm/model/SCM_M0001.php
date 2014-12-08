@@ -97,11 +97,11 @@ class SCM_M0001 {
         self::$st_mem = $st_mem;
     }
 
-    // Inserir Fornecedor
+    // Inserir Membro
     Public Static function Inserir(){
         
-        $strsql = 'INSERT INTO SGI.scm_t0001(nm_mem, nm_mae_mem, email_mem, dt_nasc_mem, est_civ_mem, cpf_mem, loc_bat_mem, st_mem)'
-        . 'VALUES(:nm_mem, :nm_mae_mem, :email_mem, :dt_nasc_mem, :est_civ_mem, :cpf_mem, :loc_bat_mem, :st_mem)';
+        $strsql = 'INSERT INTO SGI.scm_t0001(nm_mem, nm_mae_mem, email_mem, dt_nasc_mem, est_civ_mem, cpf_mem, loc_bat_mem, st_mem, end_mem)'
+        . 'VALUES(:nm_mem, :nm_mae_mem, :email_mem, :dt_nasc_mem, :est_civ_mem, :cpf_mem, :loc_bat_mem, :st_mem, :end_mem)';
     
         try{ 
             
@@ -115,6 +115,7 @@ class SCM_M0001 {
             $persist->bindValue(":cpf_mem", self::getCpf_mem());
             $persist->bindValue(":loc_bat_mem", self::getLoc_bat_mem());
             $persist->bindValue(":st_mem", self::getSt_mem());
+            $persist->bindValue(":end_mem", self::getEnd_mem());
             
             return $persist->execute();
             
@@ -123,21 +124,24 @@ class SCM_M0001 {
             return 'Erro'.$e;
         }
     }
-    // Alterar Fornecedor
+    // Alterar Membro
     Public Static function Alterar(){}
-    // Excluir  Fornecedor
+    // Excluir  Membro
     Public Static function Excluir(){}
-    //  Listar Fornecedor
+    //  Listar Membro
     Public Static function Buscar(){
         
         $strsql = "SELECT * FROM SGI.scm_t0001 ";          
         
-        if(trim(self::getNm_mem()) !== '' || trim(self::getNm_mem()) !== NULL){                    
-            $strsql .= " WHERE SGI.scm_t0001.nm_mem like'%". self::getNm_mem() ."%'";          
+        if(trim(self::getNm_mem()) !== ''){
+            $strsql .= " WHERE SGI.scm_t0001.nm_mem = '". self::getNm_mem()."'"; 
         }   
         
-        return $strsql;       
-        
+      
+//        if(trim(self::$nm_mem) !== '' || trim(self::$nm_mem) !== NULL){                    
+//            $strsql .= " AND SGI.scm_t0001.nm_mem like'%".self::getNm_mem()."%'";          
+//        }        
+                
         try{
             
             $pdo = Conexao::getInstance();        
